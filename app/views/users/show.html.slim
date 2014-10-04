@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @user.name
+p
+  strong Email:
+  = @user.email
+p
+  strong Birthday:
+  = @user.birthday
+p
+  strong Annual income:
+  = @user.annual_income
+
+= link_to 'Edit', edit_user_path(@user)
+'|
+= link_to 'Back', users_path
