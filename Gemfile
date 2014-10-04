@@ -18,6 +18,7 @@ group :development do
   gem 'binding_of_caller', :platforms=>[:mri_21]
   gem 'quiet_assets'
   gem 'rails_layout'
+  gem 'i18n_generators'
 end
 group :development, :test do
   gem 'factory_girl_rails'
