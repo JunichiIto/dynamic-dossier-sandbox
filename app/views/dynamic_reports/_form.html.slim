@@ -1,4 +1,4 @@
-= form_for @dynamic_report do |f|
+= nested_form_for @dynamic_report do |f|
   - if @dynamic_report.errors.any?
     #error_explanation
       h2 = "#{pluralize(@dynamic_report.errors.count, "error")} prohibited this dynamic_report from being saved:"
@@ -12,4 +12,11 @@
   .field
     = f.label :sql
     = f.text_area :sql
+  .report-params
+    = f.fields_for :report_params do |ff|
+      = ff.text_field :name
+      = ff.text_field :param_type
+      = ff.link_to_remove "Remove"
+    = f.link_to_add "Add", :report_params
+
   .actions = f.submit 'Save'

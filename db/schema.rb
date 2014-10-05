@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141005005030) do
+ActiveRecord::Schema.define(version: 20141005045250) do
 
   create_table "dynamic_reports", force: true do |t|
     t.string   "name"
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(version: 20141005005030) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "report_params", force: true do |t|
+    t.integer  "dynamic_report_id"
+    t.string   "name"
+    t.string   "param_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "report_params", ["dynamic_report_id"], name: "index_report_params_on_dynamic_report_id"
 
   create_table "users", force: true do |t|
     t.string   "name"

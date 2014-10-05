@@ -69,6 +69,6 @@ class DynamicReportsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dynamic_report_params
-      params.require(:dynamic_report).permit(:name, :sql)
+      params.require(:dynamic_report).permit(:name, :sql, report_params_attributes: %i(name param_type))
     end
 end

@@ -14,13 +14,14 @@ gem 'bootstrap-sass'
 gem 'high_voltage'
 gem 'slim-rails'
 gem 'dossier'
+gem 'nested_form'
+gem 'jquery-turbolinks'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_21]
   gem 'quiet_assets'
   gem 'rails_layout'
   gem 'i18n_generators'
-  gem 'faker'
 end
 group :development, :test do
   gem 'factory_girl_rails'
