@@ -11,6 +11,8 @@ p
   ul
     - @dynamic_report.report_params.each do |report_param|
       li = "#{report_param.name} (#{report_param.param_type})"
+p
+  = link_to 'Open report', dynamic_report_result_path(@dynamic_report), target: '_blank'
 
 = link_to 'Edit', edit_dynamic_report_path(@dynamic_report)
 '|
