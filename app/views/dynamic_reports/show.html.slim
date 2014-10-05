@@ -6,6 +6,11 @@ p
 p
   strong Sql:
   = simple_format @dynamic_report.sql
+p
+  strong Report params:
+  ul
+    - @dynamic_report.report_params.each do |report_param|
+      li = "#{report_param.name} (#{report_param.param_type})"
 
 = link_to 'Edit', edit_dynamic_report_path(@dynamic_report)
 '|
