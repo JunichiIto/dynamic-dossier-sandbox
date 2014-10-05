@@ -1,0 +1,15 @@
+= form_for @dynamic_report do |f|
+  - if @dynamic_report.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@dynamic_report.errors.count, "error")} prohibited this dynamic_report from being saved:"
+      ul
+        - @dynamic_report.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :sql
+    = f.text_area :sql
+  .actions = f.submit 'Save'

@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @dynamic_report.name
+p
+  strong Sql:
+  = @dynamic_report.sql
+
+= link_to 'Edit', edit_dynamic_report_path(@dynamic_report)
+'|
+= link_to 'Back', dynamic_reports_path
