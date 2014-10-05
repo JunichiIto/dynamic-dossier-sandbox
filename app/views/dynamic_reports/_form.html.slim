@@ -1,23 +1,29 @@
-= nested_form_for @dynamic_report do |f|
-  - if @dynamic_report.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@dynamic_report.errors.count, "error")} prohibited this dynamic_report from being saved:"
-      ul
-        - @dynamic_report.errors.full_messages.each do |message|
-          li = message
+.container
+  .row
+    .col-md-12
+      = nested_form_for @dynamic_report, html: { role: 'form' } do |f|
+        - if @dynamic_report.errors.any?
+          #error_explanation
+            h2 = "#{pluralize(@dynamic_report.errors.count, "error")} prohibited this dynamic_report from being saved:"
+            ul
+              - @dynamic_report.errors.full_messages.each do |message|
+                li = message
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :sql
-    = f.text_area :sql
-  .report-params
-    label Report params
-    = f.fields_for :report_params do |ff|
-      = ff.text_field :name, placeholder: 'name'
-      = ff.select :param_type, ReportParam.param_type.options
-      = ff.link_to_remove "Remove"
-    = f.link_to_add "Add", :report_params
+        .form-group
+          = f.label :name
+          = f.text_field :name, class: 'form-control'
+        .form-group
+          = f.label :sql
+          = f.text_area :sql, class: 'form-control'
+        .report-params
+          label Report params
+          = f.fields_for :report_params do |ff|
+            .form-group
+              = ff.text_field :name, placeholder: 'name', class: 'form-control'
+              = ff.select :param_type, ReportParam.param_type.options, { prompt: 'Type' }, class: 'form-control'
+              = ff.link_to_remove "Remove", class: 'btn btn-default'
+          .form-group
+            = f.link_to_add "Add", :report_params, class: 'btn btn-default add-btn'
 
-  .actions = f.submit 'Save'
+        .form-group
+           = f.submit 'Save', class: 'btn btn-primary save-btn'

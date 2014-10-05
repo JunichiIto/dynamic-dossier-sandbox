@@ -44,3 +44,7 @@ section {
   @extend .row;
   margin-top: 20px;
   }
+
+textarea.form-control {
+  height: 250px;
+}
