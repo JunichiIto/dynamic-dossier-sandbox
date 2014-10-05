@@ -1,8 +1,10 @@
 %h2= report.formatted_title
 
-= link_to 'Download CSV', formatted_dossier_report_path('csv', report), class: 'download-csv'
+%p= link_to 'Download CSV', formatted_dossier_report_path('csv', report), class: 'download-csv'
 
 = render_options(report)
+
+%p= link_to 'Edit report', edit_dynamic_report_path(report.dynamic_report)
 
 = form_for report, as: :options, url: url_for, html: {method: :get} do |f|
   = hidden_field_tag 'options[report_name]', report.dynamic_report.name
