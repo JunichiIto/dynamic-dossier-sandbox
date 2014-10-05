@@ -1,0 +1,30 @@
+%h2= report.formatted_title
+
+= link_to 'Download CSV', formatted_dossier_report_path('csv', report), class: 'download-csv'
+
+= render_options(report)
+
+= form_for report, as: :options, url: url_for, html: {method: :get} do |f|
+  = hidden_field_tag 'options[report_name]', report.dynamic_report.name
+  - report.report_params.each do |report_param|
+    = f.label report_param.name
+    = f.text_field report_param.name
+  = f.button "Submit"
+
+%table
+  %thead
+    %tr
+      - report.results.headers.each do |header|
+        %th= report.format_header(header)
+  %tbody
+    - report.results.body.each do |row|
+      %tr
+        - row.each do |value|
+          %td= value
+
+  - if report.results.footers.any?
+    %tfoot
+      - report.results.footers.each do |row|
+        %tr
+          - row.each do |value|
+            %th= value
