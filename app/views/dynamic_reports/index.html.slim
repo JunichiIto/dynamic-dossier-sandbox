@@ -7,11 +7,13 @@ table.table
       th
       th
       th
+      th
 
   tbody
     - @dynamic_reports.each do |dynamic_report|
       tr
         td = dynamic_report.name
+        td = link_to 'Report', dossier_report_path(options: { report_name: dynamic_report.name }, report: 'dynamic_dossier'), target: '_blank'
         td = link_to 'Show', dynamic_report
         td = link_to 'Edit', edit_dynamic_report_path(dynamic_report)
         td = link_to 'Destroy', dynamic_report, data: {:confirm => 'Are you sure?'}, :method => :delete
