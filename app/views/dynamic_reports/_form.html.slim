@@ -16,7 +16,7 @@
     label Report params
     = f.fields_for :report_params do |ff|
       = ff.text_field :name, placeholder: 'name'
-      = ff.text_field :param_type
+      = ff.select :param_type, ReportParam.param_type.options
       = ff.link_to_remove "Remove"
     = f.link_to_add "Add", :report_params
 
