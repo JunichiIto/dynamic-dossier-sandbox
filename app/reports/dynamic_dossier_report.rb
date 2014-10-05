@@ -18,7 +18,13 @@ class DynamicDossierReport < Dossier::Report
       @dynamic_report.report_params.each do |param|
         singleton_class.class_eval do
           define_method param.name do
-            options[param.name]
+            if param.param_type.string?
+              options[param.name].to_s
+            elsif param.param_type.integer?
+              options[param.name].to_i
+            else
+              raise "Unknown param type: #{param.param_type}"
+            end
           end
         end
       end
