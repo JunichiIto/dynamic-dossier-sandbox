@@ -5,7 +5,7 @@ p
   = @dynamic_report.name
 p
   strong Sql:
-  = @dynamic_report.sql
+  = simple_format @dynamic_report.sql
 
 = link_to 'Edit', edit_dynamic_report_path(@dynamic_report)
 '|
